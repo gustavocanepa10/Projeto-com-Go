@@ -1,31 +1,41 @@
 package main
 import "fmt"
 import "os"
+import "net/http"
+
 
 func main() {
+
 	exibeIntroducao()
 	exibeMenu()
+	iniciarMonitoramento()
 	
 	
-
-
-    
 	
     comando :=leComando()
 
 	switch comando { 
 	   case 1:
-		fmt.Println("Monitorando...")
+		iniciarMonitoramento()
 	   case 2:
 		fmt.Println("Exibindo Logs...")
 	   case 0:
 		fmt.Println("Saindo do programa...")
 		os.Exit(0)
 	   default:
-		fmt.Println("Não conheco essa instrução")
+		fmt.Println("Não conheco esse comando")
+		os.Exit(-1)
 
 
 	}
+
+}
+
+func devolveNome () string {
+	nome := "Gustavo"
+	return nome
+
+
 
 }
 
@@ -57,9 +67,22 @@ func leComando()int {
 	var comandoLido int
 	fmt.Scan(&comandoLido)
 	fmt.Println("O comando escolhido foi",comandoLido)
+	fmt.Scanln()
 
 
 	return comandoLido
+
+
+
+}
+
+func iniciarMonitoramento(){
+	fmt.Println("Monitorando...")
+	site :="http://www.alura.com.br"
+	resp,_:=http.Get(site)
+	fmt.Println(resp)
+
+
 
 
 
