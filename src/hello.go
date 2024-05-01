@@ -8,7 +8,7 @@ func main() {
 
 	exibeIntroducao()
 	exibeMenu()
-	iniciarMonitoramento()
+	
 	
 	
 	
@@ -54,6 +54,7 @@ func exibeMenu(){
 	fmt.Println("1- Iniciar Monitoramento")
 	fmt.Println("2- Exibir Logs ")
 	fmt.Println("0- Sair do programa ")
+	
 
 
 
@@ -65,9 +66,9 @@ func exibeMenu(){
 
 func leComando()int {
 	var comandoLido int
-	fmt.Scan(&comandoLido)
+	fmt.Scanln(&comandoLido)
 	fmt.Println("O comando escolhido foi",comandoLido)
-	fmt.Scanln()
+	
 
 
 	return comandoLido
@@ -81,6 +82,27 @@ func iniciarMonitoramento(){
 	site :="http://www.alura.com.br"
 	resp,_:=http.Get(site)
 	fmt.Println(resp)
+
+    if resp.StatusCode ==200{
+		fmt.Println("Site:",site,"foi carregado com sucesso!")
+	
+    
+	}else{ 
+		fmt.Println("Site:",site,"Está com problemas. Status code ",resp.StatusCode)
+		
+		
+		
+
+
+
+	}
+	
+    
+
+
+
+
+	
 
 
 
